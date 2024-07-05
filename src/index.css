@@ -12,7 +12,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+img.header-logo {
+  height: 10em;
+  float: left;
+}
+header {
+  padding-top: 0em;
 
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -51,7 +58,7 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 0px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
