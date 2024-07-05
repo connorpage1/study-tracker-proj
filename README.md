@@ -1,10 +1,10 @@
 # Getting started
-First, cd into the study-tracker-proj folder and run `npm install` to install the packages and dependencies used in this project. 
+First, `cd` into the `study-tracker-proj` folder and run `npm install` to install the packages and dependencies used in this project. 
 
 ## Starting JSON server
-This comes with a `db.json` file with dummy data created by ChatGPT. This `db.json` file is created by the Python script `generate_db.py`. If you would like to make changes to the dummy data, do so in the Python file, cd into the study-tracker-proj folder, and run the command `python generate_db.py`. 
+This comes with a `db.json` file with dummy data created by ChatGPT. This `db.json` file is created by the Python script `generate_db.py`. If you would like to make changes to the dummy data, do so in the Python file, `cd` into the `study-tracker-proj` folder, and run the command `python generate_db.py`. 
 
-To start the db.json as a local server, cd into the main study-tracker-proj folder and run `npm run start-server`, which will use json-server to run the db.json on port 8000.
+To start the `db.json` as a local server, `cd` into the main `study-tracker-proj` folder and run `npm run start-server`, which will use json-server to run the `db.json` on port 8000.
 
 ## Starting the app
 This app was created using Vite, so run the `npm run dev` command to start the app in the browser. 
