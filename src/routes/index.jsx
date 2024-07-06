@@ -3,6 +3,7 @@ import App from "../App";
 import TableContainer from "../components/table/TableContainer";
 import Form from "../components/form/Form";
 import LandingPage from "../components/main/LandingPage";
+import Table from "../components/table/Table";
 
 
 export const router = createBrowserRouter([
@@ -17,13 +18,21 @@ export const router = createBrowserRouter([
         {
           path: "/sessions",
           element: <TableContainer />,
+          children: [
+            {
+              path: "",
+              element: <Table />,
+
+            },
+            {
+              path: "new",
+              element: <Form />,
+
+            },
+          ]
         
         },
-        {
-          path: "sessions/new",
-          element: <Form />,
         
-        },
       ],
     },
   ]);
