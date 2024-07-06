@@ -1,18 +1,12 @@
-import { useState, useEffect } from "react"
-import TableRow from "./TableRow"
 
-const url = 'http://localhost:8000/study-sessions'
+import TableRow from "./TableRow"
+import { useOutletContext } from "react-router-dom"
+
+
 
 const Table = () => {
-    const [sessions, setSessions] = useState([])
-
-    useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(setSessions)
-        .catch(console.log)
-    }, [])
-
+    const {sessions} = useOutletContext();
+    
     return (
         <table>
             <thead>
