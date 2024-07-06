@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
           element: <TableContainer />,
           children: [
             {
-              path: "",
+              index: true,
               element: <Table />,
 
             },
