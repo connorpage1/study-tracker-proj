@@ -69,10 +69,11 @@ const Form = () => {
                 <select id="bricked" name="bricked" value={formData.bricked} onChange={handleChange} >
                     <option value=''>Select One</option>
                     <option value='true'>Yes</option>
-                    <option value='flase'>No</option>
+                    <option value='false'>No</option>
 
                 </select><br/>
-            
+                <br />
+            <button type="submit">Submit</button>
             </form>
         </div>
     )
