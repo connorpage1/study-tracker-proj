@@ -1,6 +1,6 @@
 import { handleError } from "../error/errorFunctions"
 
-export const fetchPostSession = (url, validatedData,addSession) => {
+export const fetchPostSession = (url, validatedData, addSession, navigate) => {
     fetch (url, {
         method: "POST",
         headers: {
@@ -18,6 +18,7 @@ export const fetchPostSession = (url, validatedData,addSession) => {
     })
     .then(session => {
         addSession(session)
+        navigate('/sessions')
     })
     .catch(err => handleError`Could not add study session: \n${err.message || err}`)
 }

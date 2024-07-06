@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { useOutletContext } from "react-router-dom"
+import { useOutletContext, useNavigate } from "react-router-dom"
 import { fetchPostSession } from "../apis/fetchFunctions";
 
-const Form = () => {
+    // Sets initial state to empty strings—set up outside Form function
     const initialState = {
         date: "",
         start: "",
@@ -13,13 +13,24 @@ const Form = () => {
         focus: "",
         bricked: ""
     }
+    
 
+const Form = () => {
+    
+    const navigate = useNavigate();
+
+
+    // Bring in addSession and url from outlet context
     const { addSession, url } = useOutletContext();
 
     const [formData, setFormData] = useState(initialState)
 
+    // Change state when form changes
     const handleChange = (e) => {
+        //Destructure e.target
         const {name, value} = e.target
+
+        // Make sure the values are in the correct form before they are added to the JSON file so that values can be used for calculations
         if (name === 'duration' || name ==='focus') {
             setFormData({...formData, [name]: Number(value)})
         }
@@ -33,8 +44,9 @@ const Form = () => {
     }
     
     const handleSubmit = (e) => {
+        // Prevent page refresh
         e.preventDefault()
-        fetchPostSession(url, formData, addSession)
+        fetchPostSession(url, formData, addSession, navigate)
     }
 
 
@@ -79,7 +91,7 @@ const Form = () => {
                     <option value='9'>9</option>
                     <option value='10'>10</option>
                 </select><br/>
-               
+
                 <label htmlFor="bricked">Phone Bricked? </label>
                 <select id="bricked" name="bricked" value={formData.bricked} onChange={handleChange} >
                     <option value=''>Select One</option>

@@ -560,6 +560,17 @@
       "description": "hjkbklj;nknlkln;lk",
       "focus": 7,
       "bricked": true
+    },
+    {
+      "id": "d855",
+      "date": "2024-07-06",
+      "start": "22:23",
+      "duration": 3,
+      "location": "uguh",
+      "subject": "typing",
+      "description": "jhgghh",
+      "focus": 3,
+      "bricked": false
     }
   ]
 }
