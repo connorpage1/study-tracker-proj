@@ -1,3 +1,4 @@
+import toast from "react-hot-toast"
 import { handleError } from "../error/errorFunctions"
 
 export const fetchPostSession = (url, validatedData, addSession, navigate) => {
@@ -18,7 +19,8 @@ export const fetchPostSession = (url, validatedData, addSession, navigate) => {
     })
     .then(session => {
         addSession(session)
+        toast.success("Study session created")
         navigate('/sessions')
     })
-    .catch(err => handleError`Could not add study session: \n${err.message || err}`)
+    .catch(err => handleError`Failed to create study session. \n${err.message || err}`)
 }

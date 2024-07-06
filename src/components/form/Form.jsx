@@ -92,6 +92,8 @@ const Form = () => {
                     <option value='10'>10</option>
                 </select><br/>
 
+
+                // TODO Figure out why this is behaving weirdly. "Yes" works, but "no" goes to "yes" and "select one" goes to "no." Briefly worked and then broke again.
                 <label htmlFor="bricked">Phone Bricked? </label>
                 <select id="bricked" name="bricked" value={formData.bricked} onChange={handleChange} >
                     <option value=''>Select One</option>
