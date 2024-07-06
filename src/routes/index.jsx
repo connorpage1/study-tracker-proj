@@ -4,12 +4,14 @@ import TableContainer from "../components/table/TableContainer";
 import Form from "../components/form/Form";
 import LandingPage from "../components/main/LandingPage";
 import Table from "../components/table/Table";
+import ErrorPage from "../components/error/ErrorPage";
 
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <App />,
+      errorElement: <ErrorPage />,
     //   loader: rootLoader,
       children: [
         { index: true,
