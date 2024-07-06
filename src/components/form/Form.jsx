@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useOutletContext } from "react-router-dom"
+import { fetchPostSession } from "../apis/fetchFunctions";
 
 const Form = () => {
     const initialState = {
@@ -12,14 +14,27 @@ const Form = () => {
         bricked: ""
     }
 
+    const { addSession, url } = useOutletContext();
+
     const [formData, setFormData] = useState(initialState)
 
     const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        const {name, value} = e.target
+        if (name === 'duration' || name ==='focus') {
+            setFormData({...formData, [name]: Number(value)})
+        }
+        else if (name === 'bricked') {
+            setFormData({...formData, [name]: Boolean(value)})
+        }
+        else {
+            setFormData({...formData, [name]: value})
+        }
+        
     }
     
     const handleSubmit = (e) => {
         e.preventDefault()
+        fetchPostSession(url, formData, addSession)
     }
 
 

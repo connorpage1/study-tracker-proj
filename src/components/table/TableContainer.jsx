@@ -15,10 +15,13 @@ const TableContainer = () => {
         .catch(handleError)
     }, [])
 
+    const addSession = (newSession) => {
+        setSessions(current => [...current, newSession])
+    }
 
     return (
         <div id="table-container">
-            <Outlet context={{ sessions }}/>
+            <Outlet context={{ sessions, addSession, url }}/>
         </div>
         
     )
