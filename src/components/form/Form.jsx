@@ -35,7 +35,8 @@ const Form = () => {
             setFormData({...formData, [name]: Number(value)})
         }
         else if (name === 'bricked') {
-            setFormData({...formData, [name]: Boolean(value)})
+            const formValue = (value === "true" ? true : (!value ? '' : false))
+            setFormData({...formData, [name]: formValue})
         }
         else {
             setFormData({...formData, [name]: value})
@@ -53,6 +54,7 @@ const Form = () => {
     return (
         <div id="form-container">
             <form className="form" autoComplete="off" onSubmit={handleSubmit}>
+                <h2>Log a new study session</h2>
                 <label htmlFor="date">Date: </label><br/>
                 <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} /><br/>
                 
@@ -61,7 +63,7 @@ const Form = () => {
                
                 <label htmlFor="duration">Duration (minutes): </label><br/>
                 <input type="number" id="duration" name="duration" step="1" value={formData.duration} onChange={handleChange} /><br/>
-               
+
                 <label htmlFor="location">Location: </label><br/>
                 <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} /><br/>
                
@@ -93,7 +95,7 @@ const Form = () => {
                 </select><br/>
 
 
-                // TODO Figure out why this is behaving weirdly. "Yes" works, but "no" goes to "yes" and "select one" goes to "no." Briefly worked and then broke again.
+                {/* TODO Figure out why this is behaving weirdly. "Yes" works, but "no" goes to "yes" and "select one" goes to "no." Briefly worked and then broke again. */}
                 <label htmlFor="bricked">Phone Bricked? </label>
                 <select id="bricked" name="bricked" value={formData.bricked} onChange={handleChange} >
                     <option value=''>Select One</option>

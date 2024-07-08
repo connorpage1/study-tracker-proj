@@ -582,6 +582,28 @@
       "description": "3re",
       "focus": 7,
       "bricked": false
+    },
+    {
+      "id": "44a4",
+      "date": "2024-07-06",
+      "start": "23:30",
+      "duration": 2,
+      "location": "nwefjk",
+      "subject": "",
+      "description": "jiefw;l",
+      "focus": 2,
+      "bricked": true
+    },
+    {
+      "id": "c4f6",
+      "date": "2024-07-06",
+      "start": "23:30",
+      "duration": 2,
+      "location": "nwefjk",
+      "subject": "",
+      "description": "jiefw;l",
+      "focus": 2,
+      "bricked": true
     }
   ]
 }
