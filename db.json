@@ -549,61 +549,6 @@
       "description": "Reviewed historical Russian literature to gain cultural context. Wrote essays to improve writing skills. Completed a series of language exercises.",
       "focus": 10,
       "bricked": false
-    },
-    {
-      "id": "73af",
-      "date": "2024-07-06",
-      "start": "10:02",
-      "duration": 70,
-      "location": "coffee shop",
-      "subject": "Russian",
-      "description": "hjkbklj;nknlkln;lk",
-      "focus": 7,
-      "bricked": true
-    },
-    {
-      "id": "d855",
-      "date": "2024-07-06",
-      "start": "22:23",
-      "duration": 3,
-      "location": "uguh",
-      "subject": "typing",
-      "description": "jhgghh",
-      "focus": 3,
-      "bricked": false
-    },
-    {
-      "id": "45e7",
-      "date": "2024-07-06",
-      "start": "22:32",
-      "duration": 1,
-      "location": "3t4",
-      "subject": "cybersecurity",
-      "description": "3re",
-      "focus": 7,
-      "bricked": false
-    },
-    {
-      "id": "44a4",
-      "date": "2024-07-06",
-      "start": "23:30",
-      "duration": 2,
-      "location": "nwefjk",
-      "subject": "",
-      "description": "jiefw;l",
-      "focus": 2,
-      "bricked": true
-    },
-    {
-      "id": "c4f6",
-      "date": "2024-07-06",
-      "start": "23:30",
-      "duration": 2,
-      "location": "nwefjk",
-      "subject": "",
-      "description": "jiefw;l",
-      "focus": 2,
-      "bricked": true
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useOutletContext, useNavigate } from "react-router-dom"
 import { fetchPostSession } from "../apis/fetchFunctions";
+import toast from "react-hot-toast";
 
     // Sets initial state to empty strings—set up outside Form function
     const initialState = {
@@ -44,6 +45,7 @@ const Form = () => {
         
     }
     
+
     const handleSubmit = (e) => {
         // Prevent page refresh
         e.preventDefault()
