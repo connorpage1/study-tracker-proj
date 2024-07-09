@@ -28,7 +28,7 @@ const ExpandedView = () => {
         return (
             <div id="session-details">
                 <h2>Session Details:</h2>
-                <p><strong>Date: </strong>{dateFormat(detailSession.date,'dddd, mmmm dS, yyyy')}</p>
+                <p><strong>Date: </strong>{dateFormat(detailSession.date,'dddd, mmmm dS, yyyy', true)}</p>
                 <p><strong>Start Time:</strong> {detailSession.start}</p>
                 <p><strong>Duration: </strong>{Math.floor(detailSession.duration/60)} hours {detailSession.duration % 60} minutes</p>
                 <p><strong>Location:</strong> {detailSession.location}</p>

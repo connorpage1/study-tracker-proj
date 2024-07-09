@@ -2,12 +2,13 @@ import toast from "react-hot-toast"
 import { handleError } from "../error/errorFunctions"
 
 export const fetchPostSession = (url, validatedData, addSession, navigate) => {
+    const formattedValidData = {...validatedData, focus: Number(validatedData.focus), bricked: (validatedData.bricked === 'false' ? false : true)}
     const fetchPromise = fetch (url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(validatedData)
+        body: JSON.stringify(formattedValidData)
     })
     .then(res => {
         if (res.ok) {

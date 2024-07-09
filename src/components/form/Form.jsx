@@ -4,6 +4,7 @@ import { fetchPostSession } from "../apis/fetchFunctions";
 import toast from "react-hot-toast";
 import * as yup from 'yup'
 import { handleError } from "../error/errorFunctions";
+import { Formik } from "formik";
 
     // Sets initial state to empty strings—set up outside Form function
     const initialState = {
@@ -38,7 +39,7 @@ const Form = () => {
     // Bring in addSession and url from outlet context
     const { addSession, url } = useOutletContext();
 
-    const [formData, setFormData] = useState(initialState)
+    //const [formData, setFormData] = useState(initialState)
 
     // Change state when form changes
     const handleChange = (e) => {
@@ -60,12 +61,13 @@ const Form = () => {
     }
     
 
-    const handleSubmit = (e) => {
+    const handleFormSubmit = (formData) => {
         // Prevent page refresh
-        e.preventDefault()
-        schema.validate(formData)
-        .then(validatedData => fetchPostSession(url, validatedData, addSession, navigate))
+        //debugger
+        // e.preventDefault()
+        fetchPostSession(url, formData, addSession, navigate)
         .catch(err => {
+            debugger
             const error = JSON.stringify(err)
             console.log(error)
             handleError('Please fill out all form fields correctly')
@@ -76,59 +78,77 @@ const Form = () => {
 
     return (
         <div id="form-container">
-            <form className="form" autoComplete="off" onSubmit={handleSubmit}>
-                <h2>Log a new study session</h2>
-                <label htmlFor="date">Date: </label><br/>
-                <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} /><br/>
+            <Formik 
+            initialValues={initialState}
+            validationSchema={schema}
+            onSubmit={handleFormSubmit}
+            >
+                { ({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
+                <form className="form" autoComplete="off" onSubmit={handleSubmit}>
+                    <h2>Log a new study session</h2>
+                    <label htmlFor="date">Date: </label><br/>
+                    <input type="date" id="date" name="date" value={values.date} onChange={handleChange} onBlur={handleBlur}/><br/>
+                    {touched.date && errors.date && <div className='error'><p>{errors.date}</p></div>}
+                    
+                    <label htmlFor="start">Start Time: </label><br/>
+                    <input type="time" id="start" name="start" value={values.start} onChange={handleChange} onBlur={handleBlur} /><br/>
+                    {touched.start && errors.start && <div className='error'><p>{errors.start}</p></div>}
+
+
+                    <label htmlFor="duration">Duration (minutes): </label><br/>
+                    <input type="number" id="duration" name="duration" step="1" value={values.duration} onChange={handleChange} onBlur={handleBlur} /><br/>
+                    {touched.duration && errors.duration && <div className='error'><p>{errors.duration}</p></div>}
+
+                    <label htmlFor="location">Location: </label><br/>
+                    <input type="text" id="location" name="location" value={values.location} onChange={handleChange} onBlur={handleBlur} /><br/>
+                    {touched.location && errors.location && <div className='error'><p>{errors.location}</p></div>}
                 
-                <label htmlFor="start">Start Time: </label><br/>
-                <input type="time" id="start" name="start" value={formData.start} onChange={handleChange} /><br/>
-               
-                <label htmlFor="duration">Duration (minutes): </label><br/>
-                <input type="number" id="duration" name="duration" step="1" value={formData.duration} onChange={handleChange} /><br/>
-
-                <label htmlFor="location">Location: </label><br/>
-                <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} /><br/>
-               
-                <label htmlFor="subject">Subject: </label>
-                <select id="subject" name="subject" value={formData.subject} onChange={handleChange} >
-                    <option value=''>Select One</option>
-                    <option value='Russian'>Russian</option>
-                    <option value='cybersecurity'>cybersecurity</option>
-                    <option value='coding'>coding</option>
-                    <option value='typing'>typing</option>
-                </select><br/>
-                
-                <label htmlFor="description">Description: </label><br/>
-                <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows="7" cols='50'/><br/>
-                
-                <label htmlFor="focus">Focus Level: </label>
-                <select id="focus" name="focus" value={formData.focus} onChange={handleChange} >
-                    <option value=''>Select One</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
-                    <option value='6'>6</option>
-                    <option value='7'>7</option>
-                    <option value='8'>8</option>
-                    <option value='9'>9</option>
-                    <option value='10'>10</option>
-                </select><br/>
+                    <label htmlFor="subject">Subject: </label>
+                    <select id="subject" name="subject" value={values.subject} onChange={handleChange} onBlur={handleBlur} >
+                        <option value=''>Select One</option>
+                        <option value='Russian'>Russian</option>
+                        <option value='cybersecurity'>cybersecurity</option>
+                        <option value='coding'>coding</option>
+                        <option value='typing'>typing</option>
+                    </select><br/>
+                    {touched.subject && errors.subject && <div className='error'><p>{errors.subject}</p></div>}
+                    
+                    <label htmlFor="description">Description: </label><br/>
+                    <textarea id="description" name="description" value={values.description} onChange={handleChange} onBlur={handleBlur} rows="7" cols='50'/><br/>
+                    {touched.description && errors.description && <div className='error'><p>{errors.description}</p></div>}
+                    
+                    <label htmlFor="focus">Focus Level: </label>
+                    <select id="focus" name="focus" value={values.focus} onChange={handleChange}onBlur={handleBlur}  >
+                        <option value=''>Select One</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                        <option value='6'>6</option>
+                        <option value='7'>7</option>
+                        <option value='8'>8</option>
+                        <option value='9'>9</option>
+                        <option value='10'>10</option>
+                    </select><br/>
+                    {touched.focus && errors.focus && <div className='error'><p>{errors.focus}</p></div>}
 
 
-                {/* TODO Figure out why this is behaving weirdly. "Yes" works, but "no" goes to "yes" and "select one" goes to "no." Briefly worked and then broke again. */}
-                <label htmlFor="bricked">Phone Bricked? </label>
-                <select id="bricked" name="bricked" value={formData.bricked} onChange={handleChange} >
-                    <option value=''>Select One</option>
-                    <option value='true'>Yes</option>
-                    <option value='false'>No</option>
+                    {/* TODO Figure out why this is behaving weirdly. "Yes" works, but "no" goes to "yes" and "select one" goes to "no." Briefly worked and then broke again. */}
+                    <label htmlFor="bricked">Phone Bricked? </label>
+                    <select id="bricked" name="bricked" value={values.bricked} onChange={handleChange}onBlur={handleBlur}  >
+                        <option value=''>Select One</option>
+                        <option value='true'>Yes</option>
+                        <option value='false'>No</option>
 
-                </select><br/>
-                <br />
-            <button type="submit">Submit</button>
-            </form>
+                    </select><br/>
+                    {touched.bricked && errors.bricked && <div className='error'><p>{errors.bricked}</p></div>}
+                    <br />
+                <button type="submit">Submit</button>
+                </form>
+                )}
+            </Formik>
+            
         </div>
     )
 }

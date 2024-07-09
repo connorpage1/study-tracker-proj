@@ -4,7 +4,7 @@ import Footer from "../main/Footer";
 import NavBar from "../main/NavBar";
 
 const ErrorPage = () => {
-    const {error} = useRouteError();
+    const error = useRouteError();
 
     return (
         <>
@@ -12,7 +12,7 @@ const ErrorPage = () => {
             <NavBar />
                 <div>
                     <h2>Uh oh, you've encountered an error</h2>
-                    {/* <p>{error.message}.</p> */}
+                    { <p>{error.message || error.data}.</p>}
                 </div>
             <Footer />
         
