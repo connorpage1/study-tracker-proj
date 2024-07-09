@@ -31,7 +31,7 @@ export const fetchPostSession = (url, validatedData, addSession, navigate) => {
         {
             loading: 'Creating study session...',
             success: 'Study session created successfully!',
-            error: 'Failed to create study session.'
+            error: `Failed to create study session.`
         }
     );
 }

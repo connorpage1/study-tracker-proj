@@ -1,4 +1,8 @@
-const TableRow = ({ date, start, duration, subject, location }) => {
+import { useNavigate } from "react-router-dom"
+
+const TableRow = ({ date, start, duration, subject, location, id }) => {
+    const navigate = useNavigate();
+    
     return (
         <tr>
             <td>{date}</td>
@@ -6,7 +10,7 @@ const TableRow = ({ date, start, duration, subject, location }) => {
             <td>{duration}</td>
             <td className={subject}>{subject}</td>
             <td>{location}</td>
-            <td><button>See more</button></td>
+            <td><button onClick={() => navigate(`/sessions/${id}`)}>See more</button></td>
         </tr>
     )
 }

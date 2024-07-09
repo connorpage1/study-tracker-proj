@@ -5,6 +5,7 @@ import Form from "../components/form/Form";
 import LandingPage from "../components/main/LandingPage";
 import Table from "../components/table/Table";
 import ErrorPage from "../components/error/ErrorPage";
+import ExpandedView from "../components/table/ExpandedView";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
               path: "new",
               element: <Form />,
 
+            },
+            {
+              path: ":id",
+              element: <ExpandedView />,
             },
           ]
         

@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <Toaster />
+      
       <Header />
       <NavBar />
       <Outlet />

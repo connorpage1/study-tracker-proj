@@ -1,18 +1,44 @@
+import { useState, useEffect } from "react";
+import { useOutletContext, useParams } from "react-router-dom";
+import { handleError } from "../error/errorFunctions";
+import toast from "react-hot-toast";
+
 const ExpandedView = () => {
-    return (
-        <div>
-            <h2>Session Details:</h2>
-            <h4>Date: </h4>
-            <h4>Start Time: </h4>
-            <h4>Duration: </h4>
-            <h4>Location: </h4>
-            <h4>Subject: </h4>
-            <h4>Description: </h4>
-            <h4>Focus Level: </h4>
-            <h4>Phone Bricked?: </h4>
-        </div>
+    const { url } = useOutletContext();
+    const params = useParams();
+    const [detailSession, setDetailSession] = useState(null);
+
+
+    // Fetch the project using the url and id from params
+    useEffect(() => {
+        fetch(`${url}/${params.id}`)
+        .then(res => res.json())
+        .then(setDetailSession)
+        .catch(handleError)
+
+    }, [params.id])
+    // If there is not yet a detail session because of asynchronous fetch, display a loading screen
+    if (!detailSession){
+        return (
+            <h4>Loading...</h4>
+        )
+    }
+    else {
+        return (
+            <div id="session-details">
+                <h2>Session Details:</h2>
+                <p><strong>Date: </strong>{detailSession.date}</p>
+                <p><strong>Start Time:</strong> {detailSession.start}</p>
+                <p><strong>Duration: </strong>{detailSession.duration}</p>
+                <p><strong>Location:</strong> {detailSession.location}</p>
+                <p><strong>Subject:</strong> {detailSession.subject}</p>
+                <p><strong>Description:</strong> {detailSession.description} </p>
+                <p><strong>Focus Level: </strong> {detailSession.focus}</p>
+                <p><strong>Phone Bricked?:</strong> {detailSession.bricked ? "Yes":"No"} </p>
+            </div>
         
     )
+}
 }
 
 export default ExpandedView;
