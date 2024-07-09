@@ -560,6 +560,39 @@
       "description": "Test",
       "focus": 5,
       "bricked": false
+    },
+    {
+      "id": "bfe3",
+      "bricked": false,
+      "focus": 8,
+      "description": "fe3ojp2f3eo",
+      "subject": "cybersecurity",
+      "location": "2ekwllfkewm",
+      "duration": 90,
+      "start": "17:09",
+      "date": "2024-07-09T05:00:00.000Z"
+    },
+    {
+      "id": "3924",
+      "bricked": true,
+      "focus": 5,
+      "description": "efwjiklkew/f",
+      "subject": "cybersecurity",
+      "location": "elq;e",
+      "duration": 90,
+      "start": "12:34",
+      "date": "2024-07-09T05:00:00.000Z"
+    },
+    {
+      "id": "59c7",
+      "bricked": false,
+      "focus": 2,
+      "description": "mk;lkmmkl;",
+      "subject": "Russian",
+      "location": "kmlk;mmkl",
+      "duration": 90,
+      "start": "13:13",
+      "date": "2024-07-09T05:00:00.000Z"
     }
   ]
 }
