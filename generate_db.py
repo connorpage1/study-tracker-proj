@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 # Setup for subjects and descriptions
 subjects = ["typing", "Russian", "coding", "cybersecurity"]
-locations = ["bedroom", "coffee shop", "library", "downstairs", "study room", "garden", "balcony", "living room"]
+locations = ["bedroom", "coffee shop", "library", "downstairs", "study room", "garden", "park", "living room"]
 descriptions_by_subject = {
     "typing": [
         "Focused on improving speed with new drills.",
@@ -71,7 +71,7 @@ descriptions_by_subject = {
 def generate_study_session(date, id):
     start_hour = random.randint(6, 23)  # from 6 AM to 11 PM
     start_minute = random.randint(0, 59)
-    start_time = datetime.strptime(f"{start_hour}:{start_minute}", "%H:%M").strftime("%I:%M %p")
+    start_time = datetime.strptime(f"{start_hour}:{start_minute}", "%H:%M").strftime("%H:%M")
     duration = random.randint(45, 180)  # duration in minutes
     location = random.choice(locations)
     subject = random.choice(subjects)
