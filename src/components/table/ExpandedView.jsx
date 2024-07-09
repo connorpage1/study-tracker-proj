@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import { handleError } from "../error/errorFunctions";
+import dateFormat from "dateformat";
 import toast from "react-hot-toast";
 
 const ExpandedView = () => {
@@ -27,13 +28,13 @@ const ExpandedView = () => {
         return (
             <div id="session-details">
                 <h2>Session Details:</h2>
-                <p><strong>Date: </strong>{detailSession.date}</p>
+                <p><strong>Date: </strong>{dateFormat(detailSession.date,'dddd, mmmm dS, yyyy')}</p>
                 <p><strong>Start Time:</strong> {detailSession.start}</p>
                 <p><strong>Duration: </strong>{detailSession.duration}</p>
                 <p><strong>Location:</strong> {detailSession.location}</p>
                 <p><strong>Subject:</strong> {detailSession.subject}</p>
                 <p><strong>Description:</strong> {detailSession.description} </p>
-                <p><strong>Focus Level: </strong> {detailSession.focus}</p>
+                <p><strong>Focus Level: </strong> {detailSession.focus}/10</p>
                 <p><strong>Phone Bricked?:</strong> {detailSession.bricked ? "Yes":"No"} </p>
                 <button id='edit-button'>Edit</button>
                 <button id='delete-button'>Delete</button>

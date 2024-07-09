@@ -58,19 +58,19 @@ const Form = () => {
             <form className="form" autoComplete="off" onSubmit={handleSubmit}>
                 <h2>Log a new study session</h2>
                 <label htmlFor="date">Date: </label><br/>
-                <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} /><br/>
+                <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} required/><br/>
                 
                 <label htmlFor="start">Start Time: </label><br/>
-                <input type="time" id="start" name="start" value={formData.start} onChange={handleChange} /><br/>
+                <input type="time" id="start" name="start" value={formData.start} onChange={handleChange} required/><br/>
                
                 <label htmlFor="duration">Duration (minutes): </label><br/>
-                <input type="number" id="duration" name="duration" step="1" value={formData.duration} onChange={handleChange} /><br/>
+                <input type="number" id="duration" name="duration" step="1" value={formData.duration} onChange={handleChange} required/><br/>
 
                 <label htmlFor="location">Location: </label><br/>
-                <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} /><br/>
+                <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} required/><br/>
                
                 <label htmlFor="subject">Subject: </label>
-                <select id="subject" name="subject" value={formData.subject} onChange={handleChange} >
+                <select id="subject" name="subject" value={formData.subject} onChange={handleChange} required>
                     <option value=''>Select One</option>
                     <option value='Russian'>Russian</option>
                     <option value='cybersecurity'>cybersecurity</option>
@@ -79,10 +79,10 @@ const Form = () => {
                 </select><br/>
                 
                 <label htmlFor="description">Description: </label><br/>
-                <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows="7" cols='50'/><br/>
+                <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows="7" cols='50'required/><br/>
                 
                 <label htmlFor="focus">Focus Level: </label>
-                <select id="focus" name="focus" value={formData.focus} onChange={handleChange} >
+                <select id="focus" name="focus" value={formData.focus} onChange={handleChange} required>
                     <option value=''>Select One</option>
                     <option value='1'>1</option>
                     <option value='2'>2</option>
@@ -99,7 +99,7 @@ const Form = () => {
 
                 {/* TODO Figure out why this is behaving weirdly. "Yes" works, but "no" goes to "yes" and "select one" goes to "no." Briefly worked and then broke again. */}
                 <label htmlFor="bricked">Phone Bricked? </label>
-                <select id="bricked" name="bricked" value={formData.bricked} onChange={handleChange} >
+                <select id="bricked" name="bricked" value={formData.bricked} onChange={handleChange} required>
                     <option value=''>Select One</option>
                     <option value='true'>Yes</option>
                     <option value='false'>No</option>
