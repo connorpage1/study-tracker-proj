@@ -20,11 +20,9 @@ export const fetchPostSession = (url, validatedData, addSession, navigate) => {
     })
     .then(session => {
         addSession(session)
-        //toast.success("Study session created")
         navigate('/sessions')
     })
     .catch(err => {
-        //handleError(`Failed to create study session. \n${err.message || err}`)
         throw err})
 
     toast.promise(
