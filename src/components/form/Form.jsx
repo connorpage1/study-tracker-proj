@@ -35,32 +35,9 @@ import { Label } from "semantic-ui-react";
 const Form = () => {
     
     const navigate = useNavigate();
-
-
+    
     // Bring in addSession and url from outlet context
     const { addSession, url } = useOutletContext();
-
-    //const [formData, setFormData] = useState(initialState)
-
-    // Change state when form changes
-    const handleChange = (e) => {
-        //Destructure e.target
-        const {name, value} = e.target
-
-        // Make sure the values are in the correct form before they are added to the JSON file so that values can be used for calculations
-        if (name === 'duration' || name ==='focus') {
-            setFormData({...formData, [name]: Number(value)})
-        }
-        else if (name === 'bricked') {
-            const formValue = (value === "true" ? true : (!value ? '' : false))
-            setFormData({...formData, [name]: formValue})
-        }
-        else {
-            setFormData({...formData, [name]: value})
-        }
-        
-    }
-    
 
     const handleFormSubmit = (formData) => {
         // Prevent page refresh
