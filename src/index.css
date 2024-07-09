@@ -20,7 +20,10 @@ header {
   padding-top: 0em;
 
 }
-
+table, th, td {
+  border: 1px solid;
+  align-self: center;
+}
 a {
   font-weight: 500;
   color: #646cff;

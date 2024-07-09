@@ -19,6 +19,7 @@ const Table = () => {
                     <th>Duration</th>
                     <th>Subject</th>
                     <th>Location</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
