@@ -35,6 +35,9 @@ const ExpandedView = () => {
                 <p><strong>Description:</strong> {detailSession.description} </p>
                 <p><strong>Focus Level: </strong> {detailSession.focus}</p>
                 <p><strong>Phone Bricked?:</strong> {detailSession.bricked ? "Yes":"No"} </p>
+                <button id='edit-button'>Edit</button>
+                <button id='delete-button'>Delete</button>
+
             </div>
         
     )
