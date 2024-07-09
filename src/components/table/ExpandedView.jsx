@@ -15,7 +15,7 @@ const ExpandedView = () => {
         fetch(`${url}/${params.id}`)
         .then(res => res.json())
         .then(setDetailSession)
-        .catch(handleError)
+        .catch(err => handleError("Failed to fetch data."))
 
     }, [params.id])
     // If there is not yet a detail session because of asynchronous fetch, display a loading screen
@@ -30,7 +30,7 @@ const ExpandedView = () => {
                 <h2>Session Details:</h2>
                 <p><strong>Date: </strong>{dateFormat(detailSession.date,'dddd, mmmm dS, yyyy')}</p>
                 <p><strong>Start Time:</strong> {detailSession.start}</p>
-                <p><strong>Duration: </strong>{detailSession.duration}</p>
+                <p><strong>Duration: </strong>{Math.floor(detailSession.duration/60)} hours {detailSession.duration % 60} minutes</p>
                 <p><strong>Location:</strong> {detailSession.location}</p>
                 <p><strong>Subject:</strong> {detailSession.subject}</p>
                 <p><strong>Description:</strong> {detailSession.description} </p>

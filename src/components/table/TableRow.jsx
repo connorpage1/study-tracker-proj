@@ -8,7 +8,7 @@ const TableRow = ({ date, start, duration, subject, location, id }) => {
         <tr>
             <td>{dateFormat(date, "m/d/yy")}</td>
             <td>{start}</td>
-            <td>{duration}</td>
+            <td>{duration >= 60 ? `${Math.floor(duration/60)} h ${duration%60}` : duration} m</td>
             <td className={subject}>{subject}</td>
             <td>{location}</td>
             <td><button onClick={() => navigate(`/sessions/${id}`)}>See more</button></td>
