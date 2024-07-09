@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import * as yup from 'yup'
 import { handleError } from "../error/errorFunctions";
 import { Formik } from "formik";
+import { Label } from "semantic-ui-react";
 
     // Sets initial state to empty strings—set up outside Form function
     const initialState = {
@@ -20,7 +21,7 @@ import { Formik } from "formik";
     
 
     const schema = yup.object().shape({
-        date: yup.date("Please enter the date in the proper format").required("Date is required"),
+        date: yup.date("Please enter the date in the proper format").required("Please enter a date"),
         start: yup.string().required("Please enter a start time"),
         duration: yup.number().required("Please enter a duration").positive("Duration must be greater than zero").integer("Duration must be an integer"),
         location: yup.string().required("Please enter a location"),
@@ -88,21 +89,25 @@ const Form = () => {
                     <h2>Log a new study session</h2>
                     <label htmlFor="date">Date: </label><br/>
                     <input type="date" id="date" name="date" value={values.date} onChange={handleChange} onBlur={handleBlur}/><br/>
-                    {touched.date && errors.date && <div className='error'><p>{errors.date}</p></div>}
-                    
+                    {touched.date && errors.date && <div className='error'><Label pointing>{errors.date}</Label></div>}
+                    <br/>
+
                     <label htmlFor="start">Start Time: </label><br/>
                     <input type="time" id="start" name="start" value={values.start} onChange={handleChange} onBlur={handleBlur} /><br/>
-                    {touched.start && errors.start && <div className='error'><p>{errors.start}</p></div>}
-
+                    {touched.start && errors.start && <div className='error'><Label pointing>{errors.start}</Label></div>}
+                    <br />
 
                     <label htmlFor="duration">Duration (minutes): </label><br/>
                     <input type="number" id="duration" name="duration" step="1" value={values.duration} onChange={handleChange} onBlur={handleBlur} /><br/>
-                    {touched.duration && errors.duration && <div className='error'><p>{errors.duration}</p></div>}
+                    {touched.duration && errors.duration && <div className='error'> <Label pointing>{errors.duration}</Label></div>}
+                    <br/>
 
                     <label htmlFor="location">Location: </label><br/>
                     <input type="text" id="location" name="location" value={values.location} onChange={handleChange} onBlur={handleBlur} /><br/>
-                    {touched.location && errors.location && <div className='error'><p>{errors.location}</p></div>}
-                
+                    {touched.location && errors.location && <div className='error'><Label pointing>{errors.location}</Label></div>}
+                    <br/>
+
+
                     <label htmlFor="subject">Subject: </label>
                     <select id="subject" name="subject" value={values.subject} onChange={handleChange} onBlur={handleBlur} >
                         <option value=''>Select One</option>
@@ -111,12 +116,16 @@ const Form = () => {
                         <option value='coding'>coding</option>
                         <option value='typing'>typing</option>
                     </select><br/>
-                    {touched.subject && errors.subject && <div className='error'><p>{errors.subject}</p></div>}
+                    {touched.subject && errors.subject && <div className='error'><Label pointing>{errors.subject}</Label></div>}
+                    <br/>
+
                     
                     <label htmlFor="description">Description: </label><br/>
                     <textarea id="description" name="description" value={values.description} onChange={handleChange} onBlur={handleBlur} rows="7" cols='50'/><br/>
-                    {touched.description && errors.description && <div className='error'><p>{errors.description}</p></div>}
-                    
+                    {touched.description && errors.description && <div className='error'><Label pointing>{errors.description}</Label></div>}
+                    <br/>
+
+
                     <label htmlFor="focus">Focus Level: </label>
                     <select id="focus" name="focus" value={values.focus} onChange={handleChange}onBlur={handleBlur}  >
                         <option value=''>Select One</option>
@@ -131,10 +140,10 @@ const Form = () => {
                         <option value='9'>9</option>
                         <option value='10'>10</option>
                     </select><br/>
-                    {touched.focus && errors.focus && <div className='error'><p>{errors.focus}</p></div>}
+                    {touched.focus && errors.focus && <div className='error'><Label pointing>{errors.focus}</Label></div>}
+                    <br/>
 
 
-                    {/* TODO Figure out why this is behaving weirdly. "Yes" works, but "no" goes to "yes" and "select one" goes to "no." Briefly worked and then broke again. */}
                     <label htmlFor="bricked">Phone Bricked? </label>
                     <select id="bricked" name="bricked" value={values.bricked} onChange={handleChange}onBlur={handleBlur}  >
                         <option value=''>Select One</option>
@@ -142,7 +151,9 @@ const Form = () => {
                         <option value='false'>No</option>
 
                     </select><br/>
-                    {touched.bricked && errors.bricked && <div className='error'><p>{errors.bricked}</p></div>}
+                    {touched.bricked && errors.bricked && <div className='error'><Label pointing>{errors.bricked}</Label></div>}
+                    <br/>
+
                     <br />
                 <button type="submit">Submit</button>
                 </form>
