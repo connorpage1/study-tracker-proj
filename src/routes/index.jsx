@@ -35,7 +35,12 @@ export const router = createBrowserRouter([
             {
               path: ":id",
               element: <ExpandedView />,
+            
             },
+            {
+              path: ":id/edit",
+              element: <Form />
+            }
           ]
         
         },

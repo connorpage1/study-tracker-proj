@@ -6,15 +6,17 @@ import toast from "react-hot-toast";
 import { fetchDeleteSession } from "../apis/fetchFunctions";
 
 const ExpandedView = () => {
-    const { url, removeSession } = useOutletContext();
+    const { url, removeSession, editMode, toggleEditMode} = useOutletContext();
     const params = useParams();
     const [detailSession, setDetailSession] = useState(null);
     const navigate = useNavigate();
 
 
+    const { id } = params
+
     // Fetch the project using the url and id from params
     useEffect(() => {
-        fetch(`${url}/${params.id}`)
+        fetch(`${url}/${id}`)
         .then(res => res.json())
         .then(setDetailSession)
         .catch(err => handleError("Failed to fetch data."))
@@ -38,9 +40,9 @@ const ExpandedView = () => {
                 <p><strong>Description:</strong> {detailSession.description} </p>
                 <p><strong>Focus Level: </strong> {detailSession.focus}/10</p>
                 <p><strong>Phone Bricked?:</strong> {detailSession.bricked ? "Yes":"No"} </p>
-                <button id='edit-button'>Edit</button>
+                <button id='edit-button' onClick={ ()=> {}}>Edit</button>
                 <button id='delete-button'
-                onClick={() => fetchDeleteSession(url, params.id, removeSession, navigate)}
+                onClick={() => fetchDeleteSession(url, id, removeSession, navigate)}
                 >Delete</button>
 
             </div>

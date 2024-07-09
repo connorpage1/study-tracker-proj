@@ -1,25 +1,9 @@
-import { useEffect, useState } from "react"
-import { useOutletContext, useNavigate, useParams } from "react-router-dom"
+import { useOutletContext, useNavigate } from "react-router-dom"
 import { fetchPostSession } from "../apis/fetchFunctions";
-import toast from "react-hot-toast";
 import * as yup from 'yup'
-import { handleError } from "../error/errorFunctions";
 import { Formik } from "formik";
 import { Label } from "semantic-ui-react";
-
-    // Sets initial state to empty strings—set up outside Form function
-    const initialState = {
-        date: "",
-        start: "",
-        duration: "", 
-        location: "",
-        subject: "",
-        description: "",
-        focus: "",
-        bricked: ""
-    }
     
-
     const schema = yup.object().shape({
         date: yup.date("Please enter the date in the proper format").required("Please enter a date"),
         start: yup.string().required("Please enter a start time"),
@@ -32,36 +16,35 @@ import { Label } from "semantic-ui-react";
 
     })
 
-const Form = () => {
+const EditForm = ({ date, start, duration, location, subject, description, focus, bricked }) => {
     
+    const initialState = {
+        date,
+        start,
+        duration, 
+        location,
+        subject,
+        description,
+        focus,
+        bricked
+    }
+
+
+
     const navigate = useNavigate();
-    const { id } = useParams();
-    const [formData, setFormData ] = useState(null)
 
     // Bring in addSession and url from outlet context
     const { addSession, url } = useOutletContext();
 
-    const handleFormSubmit = (formikData) => {
-        id ? fetchPatchSession() : fetchPostSession(url, formikData, addSession, navigate)    
+    const handleFormSubmit = (formData) => {
+        fetchPostSession(url, formData, addSession, navigate)    
     }
 
-    useEffect(()=> {
-        if (id) {
-            fetch(`${url}/${id}`)
-            .then(res => res.json())
-            .then(setFormData)
-            .catch(handleError)
-        }
-    }, [])
-
-    if (id && !formData) {
-        return <h4>Loading...</h4>
-    }
 
     return (
         <div className="form-container">
             <Formik 
-            initialValues={formData ? formData : initialState}
+            initialValues={initialState}
             validationSchema={schema}
             onSubmit={handleFormSubmit}
             >
@@ -144,4 +127,4 @@ const Form = () => {
         </div>
     )
 }
-export default Form
+export default EditForm
