@@ -35,14 +35,11 @@ import { Label } from "semantic-ui-react";
 const Form = () => {
     
     const navigate = useNavigate();
-    
+
     // Bring in addSession and url from outlet context
     const { addSession, url } = useOutletContext();
 
     const handleFormSubmit = (formData) => {
-        // Prevent page refresh
-        //debugger
-        // e.preventDefault()
         fetchPostSession(url, formData, addSession, navigate)
         .catch(err => {
             debugger
