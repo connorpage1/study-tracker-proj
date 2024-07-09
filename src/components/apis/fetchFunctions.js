@@ -36,3 +36,22 @@ export const fetchPostSession = (url, validatedData, addSession, navigate) => {
         }
     );
 }
+
+export const fetchDeleteSession = (url, id, deleteFn, navigate) => {
+    const fetchDeletePromise = fetch(`${url}/${id}`, {
+        method: "DELETE"
+    })
+    .then(() => deleteFn(id))
+    .then(() => navigate('/sessions'))
+    .catch(err => {
+        throw err})
+
+    toast.promise(
+        fetchDeletePromise,
+            {
+                loading: 'Deleting session...',
+                success: 'Study session deleted!',
+                error: `Failed to delete study session.`
+            }
+        )
+}

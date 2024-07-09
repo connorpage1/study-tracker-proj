@@ -18,10 +18,12 @@ const TableContainer = () => {
     const addSession = (newSession) => {
         setSessions(current => [...current, newSession])
     }
-
+    const removeSession = (sessionId) => {
+        setSessions(current => current.filter(session => session.id !== sessionId))
+    }
     return (
         <div id="table-container">
-            <Outlet context={{ sessions, addSession, url }}/>
+            <Outlet context={{ sessions, addSession, url, removeSession }}/>
         </div>
         
     )

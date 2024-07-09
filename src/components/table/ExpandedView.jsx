@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { handleError } from "../error/errorFunctions";
 import dateFormat from "dateformat";
 import toast from "react-hot-toast";
+import { fetchDeleteSession } from "../apis/fetchFunctions";
 
 const ExpandedView = () => {
-    const { url } = useOutletContext();
+    const { url, removeSession } = useOutletContext();
     const params = useParams();
     const [detailSession, setDetailSession] = useState(null);
+    const navigate = useNavigate();
 
 
     // Fetch the project using the url and id from params
@@ -37,7 +39,9 @@ const ExpandedView = () => {
                 <p><strong>Focus Level: </strong> {detailSession.focus}/10</p>
                 <p><strong>Phone Bricked?:</strong> {detailSession.bricked ? "Yes":"No"} </p>
                 <button id='edit-button'>Edit</button>
-                <button id='delete-button'>Delete</button>
+                <button id='delete-button'
+                onClick={() => fetchDeleteSession(url, params.id, removeSession, navigate)}
+                >Delete</button>
 
             </div>
         
