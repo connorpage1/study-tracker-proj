@@ -49,7 +49,9 @@ const TimeBySubject = () => {
         },
         data: [{
             type: "bar",
-            dataPoints: dataList
+            dataPoints: dataList,
+            toolTipContent: "{label}: {y} hours",
+
             
         }]
     }
