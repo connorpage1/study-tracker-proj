@@ -98,7 +98,7 @@ start_date = end_date - timedelta(days=60)
 study_sessions = [generate_study_session(start_date + timedelta(days=i), i+1) for i in range(50)]
 
 # Create the JSON data structure
-db_data = {"study-sessions": study_sessions}
+db_data = {"study-sessions": study_sessions, "subjects": subjects}
 
 # Write to a JSON file
 with open("db.json", "w") as f:
