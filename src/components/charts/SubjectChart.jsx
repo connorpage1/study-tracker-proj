@@ -19,11 +19,13 @@ const SubjectChart = () => {
         }
     })
     
-    console.log(subjectObj)
+    let sum = 0
+    
+    Object.keys(subjectObj).forEach(key => sum += subjectObj[key].count)
 
-    const dataPoints = []
+    const dataList = []
     Object.keys(subjectObj).forEach(key => {
-        dataPoints.push({label: key, y: subjectObj[key].count})
+        dataList.push({label: key, y: subjectObj[key].count, z: Math.floor(subjectObj[key].count/sum*100)})
     })
 
 		const options = {
@@ -35,15 +37,13 @@ const SubjectChart = () => {
 			},
 			data: [{
 				type: "pie",
-				indexLabel: "{label}: {y}%",		
+				indexLabel: "{label}: {y}",	
+                toolTipContent: "{label}: <strong>{z}%</strong>",	
 				startAngle: -90,
-				dataPoints: dataPoints
+				dataPoints: dataList
 			}]
 		}
 		
-    
-
-    console.log(dataPoints)
     return (
         <div>
             <CanvasJSChart options = {options} />
