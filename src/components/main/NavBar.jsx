@@ -7,6 +7,7 @@ const NavBar = () => {
             <NavLink to="/sessions" className={({ isActive }) => isActive ? "active": ''}>View Sessions</NavLink>
             <NavLink to="/sessions/new" className={({ isActive }) => isActive ? "active": ''}>Create a New Session</NavLink>
             <NavLink to="/charts" className={({ isActive }) => isActive ? "active": ''}>View Charts</NavLink>
+            <NavLink to="/subjects/edit" className={({ isActive }) => isActive ? "active": ''}>Customize Subjects</NavLink>
         </div>
 
     )

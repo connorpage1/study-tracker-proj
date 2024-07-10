@@ -8,7 +8,6 @@ const LandingPage = () => {
             <p>To see the study data displayed in graph form, click "view graphs"</p>
             <br/>
             <button>Get started</button>
-            <SubjectForm />
         </div>
  
     )

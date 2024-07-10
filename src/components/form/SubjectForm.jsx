@@ -6,18 +6,11 @@ import { Label } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 import { handleError } from "../error/errorFunctions";
 
-const subjectUrl = 'http://localhost:8000/subjects'
 
 const SubjectForm = () => {
     const navigate = useNavigate();
-    const [subjects, setSubjects] = useState([]);
 
-    useEffect(() => {
-        fetch(subjectUrl)
-        .then(res => res.json())
-        .then(setSubjects)
-        .catch(err => handleError(err.message))
-    }, [])
+    const { subjects, subjectUrl, deleteSubject, addSubject } = useOutletContext();
 
     const formSubjects = []
     subjects.forEach(subject => formSubjects.push(subject.name))
@@ -42,9 +35,9 @@ const SubjectForm = () => {
                 body: JSON.stringify(subjectObj)
             })
             .then(res => res.json())
-            .then(newSubject => setSubjects(current => [...current, newSubject]))
+            .then(newSubject => addSubject(newSubject))
             .then(resetForm())
-            .catch(console.log)
+            .catch(err => handleError(err.message))
             })
     }
 
@@ -52,8 +45,8 @@ const SubjectForm = () => {
         fetch(`${subjectUrl}/${subjectId}`, {
             method: "DELETE"
         })
-        .then(() => setSubjects(current => current.filter(subject => subject.id !== subjectId)))
-        .catch(console.log)
+        .then(() => deleteSubject(subjectId) )
+        .catch(err => handleError(err.message))
     }
 
     const currentSubjects = (

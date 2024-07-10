@@ -39,7 +39,7 @@ const Form = () => {
     const [formData, setFormData ] = useState(null)
 
     // Bring in addSession and url from outlet context
-    const { addSession, url, updateSession } = useOutletContext();
+    const { addSession, url, updateSession, subjects } = useOutletContext();
 
     const handleFormSubmit = (formikData) => {
         id ? fetchPatchSession(formikData, url, id, updateSession, navigate) : fetchPostSession(url, formikData, addSession, navigate)    
@@ -53,6 +53,8 @@ const Form = () => {
             .catch(handleError)
         }
     }, [])
+
+    const options = subjects.map(subject => <option value={subject.name}>{subject.name}</option>)
 
     if (id && !formData) {
         return <h4>Loading...</h4>
@@ -92,10 +94,7 @@ const Form = () => {
                     <label htmlFor="subject">Subject: </label>
                     <select id="subject" name="subject" value={values.subject} onChange={handleChange} onBlur={handleBlur} >
                         <option value=''>Select One</option>
-                        <option value='Russian'>Russian</option>
-                        <option value='cybersecurity'>cybersecurity</option>
-                        <option value='coding'>coding</option>
-                        <option value='typing'>typing</option>
+                        {options}
                     </select><br/>
                     {touched.subject && errors.subject && <div className='error'><Label pointing>{errors.subject}</Label></div>}
                     <br/>

@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
           element: <ChartPage />
         },
         {
-          path:"edit-subjects",
+          path:"subjects/edit",
           element: <SubjectForm />
         }
         

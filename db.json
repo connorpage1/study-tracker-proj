@@ -549,6 +549,17 @@
       "description": "Engaged in competitive typing games online. Researched the benefits of mechanical keyboards for typing efficiency. Worked on advanced typing exercises.",
       "focus": 1,
       "bricked": false
+    },
+    {
+      "id": "f91b",
+      "date": "2024-07-06",
+      "start": "11:37",
+      "duration": 78,
+      "location": "Test",
+      "subject": "test subject",
+      "description": "Description",
+      "focus": 7,
+      "bricked": false
     }
   ],
   "subjects": [
@@ -575,14 +586,6 @@
     {
       "id": "f1be",
       "name": "test subject 2"
-    },
-    {
-      "id": "39ff",
-      "name": "test 7"
-    },
-    {
-      "id": "0cd2",
-      "name": "test 8"
     }
   ]
 }
