@@ -1,4 +1,5 @@
 
+import SubjectChart from "../charts/SubjectChart";
 import TableRow from "./TableRow"
 import { useOutletContext } from "react-router-dom"
 
@@ -11,7 +12,8 @@ const Table = () => {
     // Sort a copy of the list to avoid modifying the original data
     const sortedSessions = [...sessions].sort((a, b) => b.date.localeCompare(a.date))
     return (
-        <table>
+       <div className='table'> 
+            <table>
             <thead>
                 <tr>
                     <th>Date</th>
@@ -26,6 +28,9 @@ const Table = () => {
                 {sortedSessions.map(session => <TableRow key={session.id} {...session}/>)}
             </tbody>
         </table>
+        <SubjectChart />
+       </div>
+
     )
 }
 
