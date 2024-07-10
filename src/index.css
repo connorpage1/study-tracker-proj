@@ -16,10 +16,22 @@ img.header-logo {
   height: 8em;
   float: left;
 }
+.nav-link {
+  padding-left: 2em;
+}
+.icon {
+  padding-left: 5%;
+  align-self: center;
+}
+
 header {
   padding-top: 0em;
 
 }
+#footer {
+  align-self: center;
+}
+
 table, th, td {
   border: 1px solid;
   align-self: center;

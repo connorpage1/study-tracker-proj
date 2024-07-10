@@ -33,6 +33,7 @@ const TimeBySubject = () => {
     
     const options = {
         animationEnabled: true,
+        exportEnabled: true,
         theme: "light2",
         title:{
             text: "Study Time by Subject"

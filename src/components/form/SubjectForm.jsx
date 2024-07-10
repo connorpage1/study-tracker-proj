@@ -2,9 +2,10 @@ import { useOutletContext, useNavigate } from "react-router-dom"
 import { fetchPostSession } from "../apis/fetchFunctions";
 import * as yup from 'yup'
 import { Formik, Field, Form, ErrorMessage, FieldArray} from "formik";
-import { Label } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 import { handleError } from "../error/errorFunctions";
+import { BsTrash } from "react-icons/bs";
 
 
 const SubjectForm = () => {
@@ -50,7 +51,7 @@ const SubjectForm = () => {
     }
 
     const currentSubjects = (
-        subjects.map(subject => <li key={subject.id}>{subject.name}<button onClick={() => handleDeleteSubject(subject.id)}>🗑</button></li>)
+        subjects.map(subject => <li key={subject.id}>{subject.name}<Icon onClick={() => handleDeleteSubject(subject.id)} name='trash'/></li>)
     )
 
     return (
@@ -109,7 +110,7 @@ const SubjectForm = () => {
                                     </div>
                                 )}
                             </FieldArray>
-                            <button type="submit">Add Subject(s) to Form</button>
+                            <button type="submit">Create Subject(s)</button>
                         </Form>
                     )}
                 </Formik>
