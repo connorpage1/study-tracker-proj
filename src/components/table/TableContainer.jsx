@@ -1,19 +1,10 @@
 import { useState, useEffect } from "react"
 import { handleError } from "../error/errorFunctions"
-import { Outlet } from "react-router-dom"
-
-const url = 'http://localhost:8000/study-sessions'
+import { Outlet, useOutletContext } from "react-router-dom"
 
 
 const TableContainer = () => {
-    const [sessions, setSessions] = useState([])
-
-    useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(setSessions)
-        .catch(err => handleError(err.message))
-    }, [])
+    const { sessions, url } = useOutletContext();
 
     const addSession = (newSession) => {
         setSessions(current => [...current, newSession])

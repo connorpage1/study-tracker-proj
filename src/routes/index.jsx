@@ -6,6 +6,7 @@ import LandingPage from "../components/main/LandingPage";
 import Table from "../components/table/Table";
 import ErrorPage from "../components/error/ErrorPage";
 import ExpandedView from "../components/table/ExpandedView";
+import ChartPage from "../components/charts/ChartPage";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
           ]
         
         },
+        {
+          path: "/charts",
+          element: <ChartPage />
+        }
         
       ],
     },

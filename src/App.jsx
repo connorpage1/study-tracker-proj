@@ -2,18 +2,32 @@ import './App.css'
 import Header from './components/main/Header'
 import Footer from './components/main/Footer'
 import { Outlet } from 'react-router-dom'
-import { Toaster } from 'react-hot-toast'
 import NavBar from './components/main/NavBar'
-import SubjectChart from './components/charts/SubjectChart'
+import { useState, useEffect } from 'react'
+
+
+const url = 'http://localhost:8000/study-sessions'
+
 
 function App() {
+
+  const [sessions, setSessions] = useState([])
+
+  useEffect(() => {
+      fetch(url)
+      .then(res => res.json())
+      .then(setSessions)
+      .catch(err => handleError(err.message))
+  }, [])
+
+
 
   return (
     <>
       
       <Header />
       <NavBar />
-      <Outlet />
+      <Outlet context={{sessions, url}}/>
       <Footer />
     </>
   )

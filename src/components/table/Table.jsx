@@ -28,7 +28,6 @@ const Table = () => {
                 {sortedSessions.map(session => <TableRow key={session.id} {...session}/>)}
             </tbody>
         </table>
-        <SubjectChart />
        </div>
 
     )
