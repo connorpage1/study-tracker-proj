@@ -7,6 +7,7 @@ import Table from "../components/table/Table";
 import ErrorPage from "../components/error/ErrorPage";
 import ExpandedView from "../components/table/ExpandedView";
 import ChartPage from "../components/charts/ChartPage";
+import SubjectForm from "../components/form/SubjectForm";
 
 
 export const router = createBrowserRouter([
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
         {
           path: "/charts",
           element: <ChartPage />
+        },
+        {
+          path:"edit-subjects",
+          element: <SubjectForm />
         }
         
       ],
