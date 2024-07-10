@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useOutletContext, useNavigate, useParams } from "react-router-dom"
-import { fetchPostSession } from "../apis/fetchFunctions";
+import { fetchPostSession, fetchPatchSession } from "../apis/fetchFunctions";
 import toast from "react-hot-toast";
 import * as yup from 'yup'
 import { handleError } from "../error/errorFunctions";
@@ -39,10 +39,10 @@ const Form = () => {
     const [formData, setFormData ] = useState(null)
 
     // Bring in addSession and url from outlet context
-    const { addSession, url } = useOutletContext();
+    const { addSession, url, updateSession } = useOutletContext();
 
     const handleFormSubmit = (formikData) => {
-        id ? fetchPatchSession() : fetchPostSession(url, formikData, addSession, navigate)    
+        id ? fetchPatchSession(formikData, url, id, updateSession, navigate) : fetchPostSession(url, formikData, addSession, navigate)    
     }
 
     useEffect(()=> {
@@ -136,7 +136,7 @@ const Form = () => {
                     <br/>
 
                     <br />
-                <button type="submit">Submit</button>
+                <button type="submit">{id ? 'Update' : 'Submit'}</button>
                 </form>
                 )}
             </Formik>

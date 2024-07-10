@@ -7,13 +7,12 @@ const url = 'http://localhost:8000/study-sessions'
 
 const TableContainer = () => {
     const [sessions, setSessions] = useState([])
-    const [editMode, setEditMode] =  useState(false);
 
     useEffect(() => {
         fetch(url)
         .then(res => res.json())
         .then(setSessions)
-        .catch(handleError)
+        .catch(err => handleError(err.message))
     }, [])
 
     const addSession = (newSession) => {
@@ -23,12 +22,12 @@ const TableContainer = () => {
         setSessions(current => current.filter(session => session.id !== sessionId))
     }
 
-    const toggleEditMode = () => {
-        setEditMode(current => !current)
+    const updateSession = (patchedSession) => {
+        setSessions(current => current.map(session => session.id === patchedSession.id ? patchedSession : session))
     }
     return (
         <div id="table-container">
-            <Outlet context={{ sessions, addSession, url, removeSession, editMode, toggleEditMode }}/>
+            <Outlet context={{ sessions, addSession, url, removeSession, updateSession }}/>
         </div>
         
     )

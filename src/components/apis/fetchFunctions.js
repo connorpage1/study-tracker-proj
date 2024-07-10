@@ -53,3 +53,28 @@ export const fetchDeleteSession = (url, id, deleteFn, navigate) => {
             }
         )
 }
+
+export const fetchPatchSession = (validatedData, url, id, updateFn, navigate) => {
+    const formattedValidData = {...validatedData, focus: Number(validatedData.focus), bricked: (validatedData.bricked === 'false' ? false : true)}
+    const fetchPatchPromise = fetch(`${url}/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formattedValidData)
+    })
+    .then(res => res.json())
+    .then((patchedSession) => updateFn(patchedSession))
+    .then(()=> navigate(`/sessions/${id}`))
+    .catch(err => {throw err})
+
+
+    toast.promise(
+        fetchPatchPromise, 
+        {
+            loading: 'Updating session...',
+            success: 'Study session updated!',
+            error: `Failed to update study session.`
+        }
+    )
+}
