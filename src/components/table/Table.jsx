@@ -1,5 +1,6 @@
 
 import SubjectChart from "../charts/SubjectChart";
+import SubjectForm from "../form/SubjectForm";
 import TableRow from "./TableRow"
 import { useOutletContext } from "react-router-dom"
 
@@ -27,6 +28,7 @@ const Table = () => {
                 {sortedSessions.map(session => <TableRow key={session.id} {...session}/>)}
             </tbody>
         </table>
+        <SubjectForm />
        </div>
 
     )
