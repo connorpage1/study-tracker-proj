@@ -1,15 +1,10 @@
 import { useOutletContext, useNavigate } from "react-router-dom"
-import { fetchPostSession } from "../apis/fetchFunctions";
-import * as yup from 'yup'
 import { Formik, Field, Form, ErrorMessage, FieldArray} from "formik";
-import { Button, Icon } from "semantic-ui-react";
-import { useEffect, useState } from "react";
+import { Icon } from "semantic-ui-react";
 import { handleError } from "../error/errorFunctions";
-import { BsTrash } from "react-icons/bs";
 
 
 const SubjectForm = () => {
-    const navigate = useNavigate();
 
     const { subjects, subjectUrl, deleteSubject, addSubject } = useOutletContext();
 
@@ -57,6 +52,7 @@ const SubjectForm = () => {
     return (
         <div className='form-container'>
             <h1>Change Subjects</h1>
+            <p>To customize your experience on Study Tracker, you can add or remove subjects. To remove a subject from the form, simply click the trash icon next to its name. To add subjects, type the name of the subject you want to add into the input box. If you'd like to add multiple subjects at once, click the "Add Another Subject" button and then click "Create Subject(s)" when you're ready to add your subjects to the form!</p>
             <h4>Current Subjects</h4>
             <ul>
                 {currentSubjects}

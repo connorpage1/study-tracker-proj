@@ -551,17 +551,6 @@
       "bricked": false
     },
     {
-      "id": "f91b",
-      "date": "2024-07-06",
-      "start": "11:37",
-      "duration": 78,
-      "location": "Test",
-      "subject": "test subject",
-      "description": "Description",
-      "focus": 7,
-      "bricked": false
-    },
-    {
       "id": "838b",
       "date": "2024-07-05",
       "start": "00:55",
@@ -570,28 +559,6 @@
       "subject": "cybersecurity",
       "description": "fenjofl",
       "focus": 6,
-      "bricked": true
-    },
-    {
-      "id": "5473",
-      "date": "2024-07-09",
-      "start": "12:50",
-      "duration": 89,
-      "location": "ek2lq;",
-      "subject": "test subject 2",
-      "description": "2en;1efl",
-      "focus": 3,
-      "bricked": false
-    },
-    {
-      "id": "5959",
-      "date": "2024-07-10",
-      "start": "12:59",
-      "duration": 90,
-      "location": "kkkkkklmo",
-      "subject": "test subject",
-      "description": "nejf3klf;elknef",
-      "focus": 3,
       "bricked": true
     }
   ],
@@ -611,14 +578,6 @@
     {
       "id": "4",
       "name": "cybersecurity"
-    },
-    {
-      "id": "11f4",
-      "name": "test subject"
-    },
-    {
-      "id": "df79",
-      "name": "Test subject"
     }
   ]
 }
