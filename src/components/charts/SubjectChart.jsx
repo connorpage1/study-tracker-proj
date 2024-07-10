@@ -39,7 +39,7 @@ const SubjectChart = () => {
 			exportEnabled: true,
 			theme: "dark2", // "light1", "dark1", "dark2"
 			title:{
-				text: "Subjects Studied"
+				text: "Number of Sessions by Subject"
 			},
 			data: [{
 				type: "pie",
