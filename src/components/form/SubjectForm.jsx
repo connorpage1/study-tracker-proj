@@ -4,33 +4,13 @@ import * as yup from 'yup'
 import { Formik } from "formik";
 import { Label } from "semantic-ui-react";
     
-    const schema = yup.object().shape({
-        date: yup.date("Please enter the date in the proper format").required("Please enter a date"),
-        start: yup.string().required("Please enter a start time"),
-        duration: yup.number().required("Please enter a duration").positive("Duration must be greater than zero").integer("Duration must be an integer"),
-        location: yup.string().required("Please enter a location"),
-        subject: yup.string().required("Please select a subject"),
-        description: yup.string().required("Please enter a description"),
-        focus: yup.number().required("Please select a focus level").positive('Focus level must be positive').integer().min(0).max(10),
-        bricked: yup.boolean("Please select whether phone was bricked").required("Please select whether phone was bricked")
+const initialValues = {
+    subjects: [
+        
+    ]
+}
 
-    })
-
-const EditForm = ({ date, start, duration, location, subject, description, focus, bricked }) => {
-    
-    const initialState = {
-        date,
-        start,
-        duration, 
-        location,
-        subject,
-        description,
-        focus,
-        bricked
-    }
-
-
-
+const SubjectForm = () => {
     const navigate = useNavigate();
 
     // Bring in addSession and url from outlet context
@@ -127,4 +107,4 @@ const EditForm = ({ date, start, duration, location, subject, description, focus
         </div>
     )
 }
-export default EditForm
+export default SubjectForm

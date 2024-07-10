@@ -97,11 +97,14 @@ end_date = datetime.now()
 start_date = end_date - timedelta(days=60)
 study_sessions = [generate_study_session(start_date + timedelta(days=i), i+1) for i in range(50)]
 
+# Dynamically create subjects with unique IDs
+subjects_data = [{"id": i + 1, "name": subject} for i, subject in enumerate(subjects)]
+
 # Create the JSON data structure
-db_data = {"study-sessions": study_sessions, "subjects": subjects}
+db_data = {"study-sessions": study_sessions, "subjects": subjects_data}
 
 # Write to a JSON file
 with open("db.json", "w") as f:
     json.dump(db_data, f, indent=4)
 
-print("db.json has been created with 50 study sessions.")
+print("db.json has been created.")
