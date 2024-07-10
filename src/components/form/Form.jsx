@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import { useOutletContext, useNavigate, useParams } from "react-router-dom"
 import { fetchPostSession, fetchPatchSession } from "../apis/fetchFunctions";
-import toast from "react-hot-toast";
 import * as yup from 'yup'
 import { handleError } from "../error/errorFunctions";
-import { Formik } from "formik";
+import { Formik, useFormik } from "formik";
 import { Label } from "semantic-ui-react";
 
     // Sets initial state to empty strings—set up outside Form function
@@ -33,28 +32,40 @@ import { Label } from "semantic-ui-react";
     })
 
 const Form = () => {
+    const { id } = useParams();
     
     const navigate = useNavigate();
-    const { id } = useParams();
     const [formData, setFormData ] = useState(null)
-
+    
     // Bring in addSession and url from outlet context
     const { addSession, url, updateSession, subjects } = useOutletContext();
-
+    
     const handleFormSubmit = (formikData) => {
         id ? fetchPatchSession(formikData, url, id, updateSession, navigate) : fetchPostSession(url, formikData, addSession, navigate)    
     }
+    
+    const formik = useFormik({
+        initialValues: (id && formData) ? formData : initialState,
+        validationSchema: schema,
+        onSubmit: handleFormSubmit 
+        });
 
     useEffect(()=> {
         if (id) {
             fetch(`${url}/${id}`)
             .then(res => res.json())
-            .then(setFormData)
+            .then(data => {
+                setFormData(data)
+                formik.setValues(data)
+            })
             .catch(handleError)
         }
-    }, [])
+        else {
+            formik.resetForm()
+        }
+    }, [id])
 
-    const options = subjects.map(subject => <option value={subject.name}>{subject.name}</option>)
+    const options = subjects.map(subject => <option key={subject.id} value={subject.name}>{subject.name}</option>)
 
     if (id && !formData) {
         return <h4>Loading...</h4>
@@ -62,52 +73,47 @@ const Form = () => {
 
     return (
         <div className="form-container">
-            <Formik 
-            initialValues={formData ? formData : initialState}
-            validationSchema={schema}
-            onSubmit={handleFormSubmit}
-            >
-                { ({ values, errors, touched, handleBlur, handleChange, handleSubmit }) => (
-                <form className="form" autoComplete="off" onSubmit={handleSubmit}>
-                    <h2>Log a new study session</h2>
+         
+                <form className="form" autoComplete="off" onSubmit={formik.handleSubmit}>
+                    {id ? <h2>Update Session</h2> : <h2>Log a New Study Session</h2>}
                     <label htmlFor="date">Date: </label><br/>
-                    <input type="date" id="date" name="date" value={values.date} onChange={handleChange} onBlur={handleBlur}/><br/>
-                    {touched.date && errors.date && <div className='error'><Label pointing>{errors.date}</Label></div>}
+                    <input type="date" id="date" name="date" value={formik.values.date} onChange={formik.handleChange} onBlur={formik.handleBlur}/><br/>
+                    {formik.touched.date && formik.errors.date && <div className='error'><Label pointing>{formik.errors.date}</Label></div>}
                     <br/>
 
                     <label htmlFor="start">Start Time: </label><br/>
-                    <input type="time" id="start" name="start" value={values.start} onChange={handleChange} onBlur={handleBlur} /><br/>
-                    {touched.start && errors.start && <div className='error'><Label pointing>{errors.start}</Label></div>}
+                    <input type="time" id="start" name="start" value={formik.values.start} onChange={formik.handleChange} onBlur={formik.handleBlur} /><br/>
+                    {formik.touched.start && formik.errors.start && <div className='error'><Label pointing>{formik.errors.start}</Label></div>}
                     <br />
 
                     <label htmlFor="duration">Duration (minutes): </label><br/>
-                    <input type="number" id="duration" name="duration" step="1" value={values.duration} onChange={handleChange} onBlur={handleBlur} /><br/>
-                    {touched.duration && errors.duration && <div className='error'> <Label pointing>{errors.duration}</Label></div>}
+                    <input type="number" id="duration" name="duration" step="1" value={formik.values.duration} onChange={formik.handleChange} onBlur={formik.handleBlur} /><br/>
+                    {formik.touched.duration && formik.errors.duration && <div className='error'> <Label pointing>{formik.errors.duration}</Label></div>}
                     <br/>
 
                     <label htmlFor="location">Location: </label><br/>
-                    <input type="text" id="location" name="location" value={values.location} onChange={handleChange} onBlur={handleBlur} /><br/>
-                    {touched.location && errors.location && <div className='error'><Label pointing>{errors.location}</Label></div>}
+                    <input type="text" id="location" name="location" value={formik.values.location} onChange={formik.handleChange} onBlur={formik.handleBlur} /><br/>
+                    {formik.touched.location && formik.errors.location && <div className='error'><Label pointing>{formik.errors.location}</Label></div>}
                     <br/>
 
 
                     <label htmlFor="subject">Subject: </label>
-                    <select id="subject" name="subject" value={values.subject} onChange={handleChange} onBlur={handleBlur} >
+                    <select id="subject" name="subject" value={formik.values.subject} onChange={formik.handleChange} onBlur={formik.handleBlur} >
                         <option value=''>Select One</option>
                         {options}
                     </select><br/>
-                    {touched.subject && errors.subject && <div className='error'><Label pointing>{errors.subject}</Label></div>}
+                    {formik.touched.subject && formik.errors.subject && <div className='error'><Label pointing>{formik.errors.subject}</Label></div>}
                     <br/>
 
                     
                     <label htmlFor="description">Description: </label><br/>
-                    <textarea id="description" name="description" value={values.description} onChange={handleChange} onBlur={handleBlur} rows="7" cols='50'/><br/>
-                    {touched.description && errors.description && <div className='error'><Label pointing>{errors.description}</Label></div>}
+                    <textarea id="description" name="description" value={formik.values.description} onChange={formik.handleChange} onBlur={formik.handleBlur} rows="7" cols='50'/><br/>
+                    {formik.touched.description && formik.errors.description && <div className='error'><Label pointing>{formik.errors.description}</Label></div>}
                     <br/>
 
 
                     <label htmlFor="focus">Focus Level: </label>
-                    <select id="focus" name="focus" value={values.focus} onChange={handleChange}onBlur={handleBlur}  >
+                    <select id="focus" name="focus" value={formik.values.focus} onChange={formik.handleChange}onBlur={formik.handleBlur}  >
                         <option value=''>Select One</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
@@ -120,26 +126,23 @@ const Form = () => {
                         <option value='9'>9</option>
                         <option value='10'>10</option>
                     </select><br/>
-                    {touched.focus && errors.focus && <div className='error'><Label pointing>{errors.focus}</Label></div>}
+                    {formik.touched.focus && formik.errors.focus && <div className='error'><Label pointing>{formik.errors.focus}</Label></div>}
                     <br/>
 
 
                     <label htmlFor="bricked">Phone Bricked? </label>
-                    <select id="bricked" name="bricked" value={values.bricked} onChange={handleChange}onBlur={handleBlur}  >
+                    <select id="bricked" name="bricked" value={formik.values.bricked} onChange={formik.handleChange}onBlur={formik.handleBlur}  >
                         <option value=''>Select One</option>
                         <option value='true'>Yes</option>
                         <option value='false'>No</option>
 
                     </select><br/>
-                    {touched.bricked && errors.bricked && <div className='error'><Label pointing>{errors.bricked}</Label></div>}
+                    {formik.touched.bricked && formik.errors.bricked && <div className='error'><Label pointing>{formik.errors.bricked}</Label></div>}
                     <br/>
 
                     <br />
                 <button type="submit">{id ? 'Update' : 'Submit'}</button>
                 </form>
-                )}
-            </Formik>
-            
         </div>
     )
 }
