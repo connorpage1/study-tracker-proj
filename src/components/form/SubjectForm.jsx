@@ -64,7 +64,7 @@ const SubjectForm = () => {
                 onSubmit={handleFormSubmit}
                 >
                     {({ values }) => (
-                        <Form>
+                        <Form className="form">
                             <FieldArray name='subjects'>
                                 {({ insert, remove, push }) => (
                                     <div>
@@ -77,6 +77,7 @@ const SubjectForm = () => {
                                                         name={`subjects.${index}.name`}
                                                         placeholder="Subject"
                                                         type="text"
+                                                        className='form-input'
                                                         />
                                                     <ErrorMessage 
                                                         name={`subjects.${index}.name`}

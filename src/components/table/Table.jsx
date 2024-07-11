@@ -11,7 +11,7 @@ const Table = () => {
     return (
        <div className='table'> 
             <h2>Study Sessions</h2>
-            <table>
+            <table className="content-table">
             <thead>
                 <tr>
                     <th>Date</th>

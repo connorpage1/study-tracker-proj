@@ -38,7 +38,7 @@ const ExpandedView = () => {
                 <p><strong>Subject:</strong> {detailSession.subject}</p>
                 <p><strong>Description:</strong> {detailSession.description} </p>
                 <p><strong>Focus Level: </strong> {detailSession.focus}/10</p>
-                <p><strong>Phone Bricked?:</strong> {detailSession.bricked ? "Yes":"No"} </p>
+                <p><strong>Phone Bricked?</strong> {detailSession.bricked ? "Yes":"No"} </p>
                 <button id='edit-button' onClick={ ()=> {navigate(`/sessions/${id}/edit`)}}>Edit</button>
                 <button id='delete-button'
                 onClick={() => fetchDeleteSession(url, id, removeSession, navigate)}
