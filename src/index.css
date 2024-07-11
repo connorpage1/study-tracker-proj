@@ -17,14 +17,23 @@ img.header-logo {
   float: left;
 }
 .nav-link {
-  padding-left: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.nav-link:hover {
+  font-size: large;
+  color: #f253e7;
+}
+.statistic>.value {
+  color: #f253e7 !important;
 }
 .icon {
-  padding-left: 0%;
   align-content: center;
 }
 
 header {
+  background-color: #f253e7;
   padding-top: 0em;
 
 }
@@ -64,8 +73,9 @@ a {
 a:hover {
   color: #535bf2;
 }
-#nav-bar {
+.nav-bar {
   padding-right: 10 em;
+  padding-bottom: 3em;
 }
 body {
   margin: 0;

@@ -1,6 +1,5 @@
 import { useOutletContext } from "react-router-dom"
 import CanvasJSReact from '@canvasjs/react-charts';
-import dateFormat from "dateformat";
 
 let CanvasJS = CanvasJSReact.CanvasJS;
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;

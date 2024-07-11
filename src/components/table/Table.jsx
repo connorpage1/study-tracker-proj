@@ -1,6 +1,3 @@
-
-import SubjectChart from "../charts/SubjectChart";
-import SubjectForm from "../form/SubjectForm";
 import TableRow from "./TableRow"
 import { useOutletContext } from "react-router-dom"
 

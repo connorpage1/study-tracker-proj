@@ -37,7 +37,7 @@ const SubjectChart = () => {
 		const options = {
 			animationEnabled: true,
 			exportEnabled: true,
-			theme: "dark2", // "light1", "dark1", "dark2"
+			theme: "light2", // "light1", "dark1", "dark2"
 			title:{
 				text: "Number of Sessions by Subject"
 			},

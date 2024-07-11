@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { handleError } from "../error/errorFunctions";
 import dateFormat from "dateformat";
-import toast from "react-hot-toast";
 import { fetchDeleteSession } from "../apis/fetchFunctions";
 
 const ExpandedView = () => {
