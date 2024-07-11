@@ -33,7 +33,7 @@ img.header-logo {
 }
 
 header {
-  background-color: #f253e7;
+  background-color: #f490ee;
   padding-top: 0em;
 
 }
@@ -98,6 +98,7 @@ table, th, td {
   -webkit-appearance: none;
   font-family: sans-serif;
   outline: none;
+  padding: 7px;
   border: 1px solid #dddddd;
   border-radius: 4px;
   background: #f9f9f9;
@@ -112,6 +113,16 @@ table, th, td {
   border: 1px solid #dddddd;
   border-radius: 4px;
   background: #f9f9f9;
+  padding: 4px;
+}
+button.x-btn {
+  padding: 4px;
+  display: inline;
+}
+.trash {
+  height: 0.5em !important;
+  font-size: 0.8em !important;
+  width: 2em !important;
 }
 
 a {
@@ -161,10 +172,7 @@ button {
 button:hover {
   border-color: #646cff;
 }
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
+
 
 @media (prefers-color-scheme: light) {
   :root {

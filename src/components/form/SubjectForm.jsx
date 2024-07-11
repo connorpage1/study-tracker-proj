@@ -88,7 +88,7 @@ const SubjectForm = () => {
                                                 <div className="col"> 
                                                     <button
                                                         type="button"
-                                                        className="secondary"
+                                                        className="secondary x-btn"
                                                         onClick={() => remove(index)}
                                                     >
                                                         X
