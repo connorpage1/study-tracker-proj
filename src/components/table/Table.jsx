@@ -13,7 +13,7 @@ const Table = () => {
     const sortedSessions = [...sessions].sort((a, b) => b.date.localeCompare(a.date))
     return (
        <div className='table'> 
-            <h1>Study Sessions</h1>
+            <h2>Study Sessions</h2>
             <table>
             <thead>
                 <tr>

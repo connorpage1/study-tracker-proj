@@ -2,7 +2,7 @@ import { SocialIcon } from 'react-social-icons'
 
 const Footer = () => {
     return (
-        <footer id='footer'>
+        <footer className='footer'>
             <p>Copyright Connor Page 2024</p>
             {/* <a href="https://github.com/connorpage1/" target="blank">See more projects.</a> */}
             <div id='social-icons'>

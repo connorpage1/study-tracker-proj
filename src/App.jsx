@@ -50,13 +50,14 @@ function App() {
     }
 
   return (
-    <>
-      
+    <div className='wrapper'>
       <Header />
       <NavBar />
-      <Outlet context={{sessions, url, subjects, subjectUrl, deleteSubject, addSession, removeSession, updateSession, deleteSubject, addSubject}}/>
+      <div className='body'>
+        <Outlet context={{sessions, url, subjects, subjectUrl, deleteSubject, addSession, removeSession, updateSession, deleteSubject, addSubject}}/>
+      </div>
       <Footer />
-    </>
+    </div>
   )
 }
 
