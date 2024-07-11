@@ -1,5 +1,5 @@
 # About
-Study Tracker is a simple single-page React application designed to help you keep track of your study sessions and gain insight from the data. 
+Study Tracker is a simple single-page React application designed to help you keep track of your study sessions and gain insight from the data. It uses a JSON server to locally store your study sessions in a `db.json` file. The app then uses client-side routing to allow users to view, modify, add, and delete study sessions. It also provides a number of helpful graphs and statistics to allow you to visualize your study data. Finally, users can customize the app to their needs without digging into the code by adding or removing subjects from the session logging form. 
 
 # Getting started
 First, fork and clone this repository. Then, `cd` into the `study-tracker-proj` folder and run `npm install` to install the packages and dependencies used in this project. 
@@ -13,6 +13,9 @@ To start the `db.json` as a local server, `cd` into the main `study-tracker-proj
 
 ## Starting the app
 This app was created using Vite, so run the `npm run dev` command to start the app in the browser. 
+
+# Navigating the app
+Upon opening, users are met with a landing page that provides a brief description of the app and a few at-a-glance statistics. From there, users can view sessions already stored in the database, create a new session, view graphs, or customize their subjects to personalize the app. 
 
 
 # Credits
