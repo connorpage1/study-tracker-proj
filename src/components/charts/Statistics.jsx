@@ -29,6 +29,7 @@ const Statistics = () => {
         {key: 'minutes', label: 'Minutes Spent Studying', value: minuteCount},
         {key: 'hours', label: 'Hours', value: hours},
         {key: 'focus', label: 'Average Focus Level', value: `${avgFocus}/10`},
+        {key: 'sessions', label: 'sessions', value: sessions.length}
     ]
     
     return (
