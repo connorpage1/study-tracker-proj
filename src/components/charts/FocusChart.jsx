@@ -7,7 +7,6 @@ let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const FocusChart = () => {
     const { sessions } = useOutletContext();
-    
     const dataList = [];
 
     sessions.forEach(session => dataList.push({x: new Date(session.date), y: session.focus}))

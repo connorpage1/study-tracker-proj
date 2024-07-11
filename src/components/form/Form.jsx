@@ -18,7 +18,7 @@ import { Label } from "semantic-ui-react";
         bricked: ""
     }
     
-
+    // Schema for yup validation
     const schema = yup.object().shape({
         date: yup.date("Please enter the date in the proper format").required("Please enter a date"),
         start: yup.string().required("Please enter a start time"),
@@ -37,13 +37,17 @@ const Form = () => {
     const navigate = useNavigate();
     const [formData, setFormData ] = useState(null)
     
-    // Bring in addSession and url from outlet context
+    // Bring in addSession, url, updateSession, and subjects from outlet context
     const { addSession, url, updateSession, subjects } = useOutletContext();
     
+    // If it has an id, it will be a PATCH, otherwise it will be a new form
     const handleFormSubmit = (formikData) => {
         id ? fetchPatchSession(formikData, url, id, updateSession, navigate) : fetchPostSession(url, formikData, addSession, navigate)    
     }
     
+    // Use useFormik hook so we can reset form from useEffect function
+    // This allows us to clear state even when the form isn't unmounted 
+    // but needs to be cleared
     const formik = useFormik({
         initialValues: (id && formData) ? formData : initialState,
         validationSchema: schema,
@@ -65,8 +69,10 @@ const Form = () => {
         }
     }, [id])
 
+    // Allows subjects added by user to appear on form
     const options = subjects.map(subject => <option key={subject.id} value={subject.name}>{subject.name}</option>)
 
+    // Accounts for asynchronous call of useEffect
     if (id && !formData) {
         return <h4>Loading...</h4>
     }

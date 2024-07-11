@@ -9,7 +9,6 @@ const TimeBySubject = () => {
 
 
     const dataList = []
-
     const subjectsObj = {}
 
     sessions.forEach(session => {
@@ -45,7 +44,6 @@ const TimeBySubject = () => {
         axisY: {
             title: "Hours",
             includeZero: true,
-            //labelFormatter: this.addSymbols
         },
         data: [{
             type: "bar",

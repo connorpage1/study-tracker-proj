@@ -18,9 +18,10 @@ const Statistics = () => {
     }
 
 
-
+    // Calculate average focus rounded to tenths place
     const avgFocus = Math.round((focusCount/sessions.length)*10)/10
 
+    // Calculate hours rounded to tenths
     const hours = Math.round((minuteCount/60)*10)/10
 
     const items = [
@@ -31,7 +32,7 @@ const Statistics = () => {
     ]
     
     return (
-        <div>
+        <div className="at-a-glance">
             <StatisticGroup items={items} />
         </div>
     )
