@@ -560,6 +560,17 @@
       "description": "fenjofl",
       "focus": 6,
       "bricked": true
+    },
+    {
+      "id": "a711",
+      "date": "2024-07-11",
+      "start": "17:10",
+      "duration": 124,
+      "location": "bedroom",
+      "subject": "Russian",
+      "description": "Studied genitive case and adjective declensions.",
+      "focus": 9,
+      "bricked": true
     }
   ],
   "subjects": [
